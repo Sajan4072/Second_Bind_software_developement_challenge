@@ -25,7 +25,7 @@ const App = () => {
 
   const handleAddBook = async (newBookData) => {
       try {
-          await addBook(newBookData); // Assuming addBook sends a POST request
+          await addBook(newBookData); 
           fetchBooks(); // Refresh books list after adding
       } catch (error) {
           console.error('Error adding book:', error);
@@ -47,7 +47,7 @@ const App = () => {
 
   return (
       <div className="container mx-auto p-6">
-          <h1 className="text-3xl font-bold mb-6 text-center">Book Inventory Management</h1>
+          <h1 className="text-3xl font-bold mb-6 text-center">Second Bind Book Inventory Management</h1>
           
           <AddBookForm onAddBook={handleAddBook} />
           <FilterBooksForm onFilter={handleFilter} />

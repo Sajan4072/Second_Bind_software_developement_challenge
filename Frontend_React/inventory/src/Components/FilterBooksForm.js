@@ -17,7 +17,7 @@ const FilterBooksForm = ({ onFilter }) => {
                 type="text"
                 value={filters}
                 onChange={handleFilterChange}
-                placeholder="Search by title, author, or genre"
+                placeholder="Search by title, author, genre, publication date, or ISBN"
                 className="block w-full p-2 mb-4 border rounded-md"
             />
             <button onClick={handleFilter} className="bg-blue-500 text-white p-2 rounded-md w-full">Filter Books</button>

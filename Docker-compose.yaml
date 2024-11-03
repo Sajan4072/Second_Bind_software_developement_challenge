@@ -1,0 +1,49 @@
+services:
+  backend:
+    build:
+      context: ./Backend/book_inventory
+      dockerfile: Dockerfile
+    command: >
+      sh -c "python manage.py migrate --settings=book_inventory.settings.local &&
+              python manage.py runserver 0.0.0.0:8000 --settings=book_inventory.settings.local"
+    volumes:
+      - ./Backend/book_inventory:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - backend-network
+    depends_on:
+      - db
+    environment:
+      SECRET_KEY: 
+      DB_NAME:  
+      DB_USER: 
+      DB_PASSWORD: 
+      DB_HOST: db
+      DB_PORT: 5432
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: 
+      POSTGRES_USER: 
+      POSTGRES_PASSWORD: 
+    ports:
+      - "5432:5432"
+    networks:
+      - backend-network
+  frontend:
+    build:
+      context: ./Frontend_React/inventory
+      dockerfile: Dockerfile  
+    ports:
+      - "3000:3000"  
+    depends_on:
+      - backend
+    networks:
+      - frontend-network
+networks:
+  backend-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge
+   

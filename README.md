@@ -24,7 +24,9 @@ Cmd: pip install - r requirements.txt
 
 6: **Create a .env file and populate your appropriate database credentials (look env.sample for reference)**
 
-7: **Run the server**
+7: **Make Migraitons and Run the server**
+`python manage.py makemigrations –settings book_inventory.settings.local`\
+`python manage.py migrate –settings book_inventory.settings.local`\
 `python manage.py runserver –settings book_inventory.settings.local`
 
 ### Swagger Api Documentation: http://127.0.0.1:8000/swagger/
